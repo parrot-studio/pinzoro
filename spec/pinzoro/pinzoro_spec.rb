@@ -19,6 +19,10 @@ describe Pinzoro do
       it { subject.all?{|v| v >= 1 && v <= dice_size }.should be_true  }
     end
 
+    context 'return nil if dice_size is nil' do
+      it { Pinzoro(nil, 2).should be_nil }
+    end
+
   end
 
   describe 'add method for Integer class' do
@@ -47,6 +51,10 @@ describe Pinzoro do
       it { subject.should be_kind_of(Integer) }
       it { subject.should >= (1 * 3) }
       it { subject.should <= (8 * 3) }
+    end
+
+    context 'call original method missing if self <= 0' do
+      it { lambda{-1.d6}.should raise_error }
     end
 
   end
