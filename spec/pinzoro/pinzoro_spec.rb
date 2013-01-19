@@ -18,7 +18,37 @@ describe Pinzoro do
       it { subject.size.should == 1 }
       it { subject.all?{|v| v >= 1 && v <= dice_size }.should be_true  }
     end
- 
+
+  end
+
+  describe 'add method for Integer class' do
+
+    context 'roll 2d6' do
+      subject { 2.d6 }
+      it { subject.size.should == 2 }
+      it { subject.all?{|v| v >= 1 && v <= 6 }.should be_true  }
+    end
+
+    context 'roll 3D10' do
+      subject { 3.D10 }
+      it { subject.size.should == 3 }
+      it { subject.all?{|v| v >= 1 && v <= 10 }.should be_true  }
+    end
+
+    context '2.d6! is sum result' do
+      subject { 2.d6! }
+      it { subject.should be_kind_of(Integer) }
+      it { subject.should >= (1 * 2) }
+      it { subject.should <= (6 * 2) }
+    end
+
+    context '3.D8! is sum result' do
+      subject { 3.D8! }
+      it { subject.should be_kind_of(Integer) }
+      it { subject.should >= (1 * 3) }
+      it { subject.should <= (8 * 3) }
+    end
+
   end
 
 end
