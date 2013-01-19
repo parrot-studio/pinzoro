@@ -1,5 +1,14 @@
+# coding: utf-8
 require "pinzoro/version"
 
 module Pinzoro
-  # Your code goes here...
+
+  module_function
+
+  def roll(dice, times)
+    return unless (dice && times)
+    return if dice <= 0 || times <= 0
+    (1..times).map{ rand(dice) + 1 }
+  end
+
 end
