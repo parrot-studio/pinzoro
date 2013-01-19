@@ -20,7 +20,7 @@ describe Pinzoro do
     end
 
     context 'return nil if dice_size is nil' do
-      it { Pinzoro(nil, 2).should be_nil }
+      it { Pinzoro.roll(nil, 2).should be_nil }
     end
 
   end
